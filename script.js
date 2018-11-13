@@ -5,16 +5,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 function onLocationFound(e) {
-        var radius = e.accuracy / 2;
+    var radius = e.accuracy / 2;
 
-        L.marker(e.latlng).addTo(map)
-                .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-        L.circle(e.latlng, radius).addTo(map);
+    L.circle(e.latlng, radius).addTo(map);
 }
 
 function onLocationError(e) {
-        alert(e.message);
+    alert(e.message);
 }
 
 map.on('locationfound', onLocationFound);
