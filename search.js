@@ -5,7 +5,7 @@ class Place{
         this.name = name;
         this.latlng = latlng;
         this.type = type;
-        this.favorite = true;
+        this.favorite = false;
         this.marker = L.marker(latlng);
         this.marker.on("click",this.callback.bind(this));
     }
