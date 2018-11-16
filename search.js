@@ -5,6 +5,8 @@ class Place{
         this.name = name;
         this.latlng = latlng;
         this.type = type;
+        this.marker = L.marker(latlng);
+        //this.marker.on('click',getPlaceInfo(this));
     }
 }
 
@@ -24,7 +26,7 @@ function search(request){
 
     places.forEach(element => {
         if(request == element.name){
-            L.marker(element.latlng).addTo(map);
+            element.marker.addTo(map);
         }
     });
 }
@@ -34,7 +36,7 @@ function createLayer(typeName){
     var markers = [];
     places.forEach(element => {
         if(typeName == element.type){
-            markers.push(L.marker(element.latlng));
+            markers.push(element.marker);
         }
     });
 
