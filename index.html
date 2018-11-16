@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
         
+        <link rel="stylesheet" href="style.css">
         <title>Hello, world!</title>
     </head>
     <body class="h-100 w-100">
@@ -19,13 +20,56 @@
             <form class="form-inline flex-fill m-0">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <button class="btn btn-light bg-light input-group-text" type="button"><i class="fas fa-sliders-h"></i></button>
-                        <div class="input-group-text bg-light border-right-0"><i class="fas fa-search"></i></div>
+                        <button class="btn btn-light bg-white input-group-text" type="button" onclick="showFilters()"><i class="fas fa-sliders-h"></i></button>
+                        <div class="input-group-text bg-white border-right-0"><i class="fas fa-search"></i></div>
                     </div>
                     <input type="text" class="form-control border-left-0" id="search-places" placeholder="Search places">
                 </div>
             </form>
         </nav>
+        
+         <!-- Sidebar -->
+        <nav class="bg-white" id="sidebar">
+            <nav id="filterNavbar" class="navbar navbar-light navbar-expand bg-light">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link mr-3" onclick="hideFilters()"><i class="fas fa-chevron-left"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="navbar-brand h3 mb-0"> Filtres</span>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="selectAllFilters">
+                        <label class="custom-control-label" for="selectAllFilters">&nbsp;</label>
+                    </div>
+                </form>
+            </nav>
+            
+            <div class="p-3 pr-6">
+                <div class="d-flex">
+                    <span class="mr-auto"><i class="fas fa-toolbox p-2 mr-2"></i>Administratif</span>
+                    <form class="form-inline">
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="filter-administratif">
+                            <label class="custom-control-label" for="filter-administratif">&nbsp;</label>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="d-flex">
+                    <span class="mr-auto"><i class="fas fa-basketball-ball p-2 mr-2"></i>Sports</span>
+                    <form class="form-inline">
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="filter-sports">
+                            <label class="custom-control-label" for="filter-sports">&nbsp;</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    
         <div id="container" class="w-100 h-100">
             <div id="map" class="h-100"></div>
         </div>
@@ -37,6 +81,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="search.js"></script>
         <script src="script.js"></script>
-        
+        <script src="sidebar.js"></script>
     </body>
 </html>
