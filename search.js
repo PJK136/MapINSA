@@ -103,7 +103,3 @@ function hideLayer(typeName){
             break;
     }
 }
-displayLayer(TypeEnum.Sport);
-setTimeout(function(){
-    hideLayer(TypeEnum.Departement);
-},2000);
