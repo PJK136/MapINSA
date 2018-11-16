@@ -6,9 +6,15 @@ class Place{
         this.latlng = latlng;
         this.type = type;
         this.marker = L.marker(latlng);
-        //this.marker.on('click',getPlaceInfo(this));
+        this.marker.on("click",this.callback.bind(this));
+    }
+
+    callback(){
+        getPlaceInfo(this);
     }
 }
+
+
 
 var places = [new Place("Service courrier", L.latLng(45.7834146,4.87807870000006),TypeEnum.Administratif),
     new Place("Direction",L.latLng(45.78332720254533,4.878197908401489),TypeEnum.Administratif),
