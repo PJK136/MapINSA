@@ -5,6 +5,7 @@ class Place{
         this.name = name;
         this.latlng = latlng;
         this.type = type;
+        this.favorite = true;
         this.marker = L.marker(latlng);
         this.marker.on("click",this.callback.bind(this));
     }
@@ -13,8 +14,6 @@ class Place{
         getPlaceInfo(this);
     }
 }
-
-
 
 var places = [new Place("Service courrier", L.latLng(45.7834146,4.87807870000006),TypeEnum.Administratif),
     new Place("Direction",L.latLng(45.78332720254533,4.878197908401489),TypeEnum.Administratif),
@@ -49,6 +48,17 @@ function createLayer(typeName){
    return L.layerGroup(markers);
 }
 
+function createFavLayer(){
+    var markers = [];
+    places.forEach(element => {
+        if(element.favorite == true){
+            markers.push(element.marker);
+        }
+    });
+
+   return L.layerGroup(markers);
+}
+
 var administratif = createLayer(TypeEnum.Administratif);
 var sport = createLayer(TypeEnum.Sport);
 var sante = createLayer(TypeEnum.Sante);
@@ -56,7 +66,7 @@ var restaurants = createLayer(TypeEnum.Restaurants);
 var va = createLayer(TypeEnum.VA);
 var amphi = createLayer(TypeEnum.Amphi);
 var departement = createLayer(TypeEnum.Departement);
-
+var favorites = createFavLayer();
 
 function displayLayer(typeName){
     switch(typeName){
@@ -81,7 +91,13 @@ function displayLayer(typeName){
         case TypeEnum.Departement:
             departement.addTo(map);
             break;
+        default :
+            if(typeName = "favorite"){
+                favorites.addTo(map);
+            }
+            break;
     }
+
 }
 
 function hideLayer(typeName){
@@ -106,6 +122,11 @@ function hideLayer(typeName){
             break;
         case TypeEnum.Departement:
             map.removeLayer(departement);
+            break;
+        default :
+            if(typeName == "favorite"){
+                map.removeLayer(favorites);
+            }
             break;
     }
 }

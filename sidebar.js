@@ -6,7 +6,7 @@ var filters = [
     {type: TypeEnum.VA, display: "Vie Associative", icon: "fa-toolbox"},
     {type: TypeEnum.Amphi, display: "Amphithéâtres", icon: "fa-toolbox"},
     {type: TypeEnum.Departement, display: "Départements", icon: "fa-toolbox"},
-    {type: TypeEnum.Favoris, display: "Favoris", icon: "fa-toolbox"}
+    {type: "favorite", display: "Favoris", icon: "fa-toolbox"}
 ]
 
 
