@@ -130,3 +130,8 @@ function hideLayer(typeName){
             break;
     }
 }
+
+function setFavorite(place,mode){
+    place.favorite = mode;
+    favorites = createFavLayer();
+}
