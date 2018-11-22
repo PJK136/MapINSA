@@ -6,7 +6,7 @@ var filters = [
     {type: "VA", display: "Vie Associative", icon: "fa-toolbox"},
     {type: "Amphi", display: "Amphithéatres", icon: "fa-toolbox"},
     {type: "Departement", display: "Départements", icon: "fa-toolbox"},
-    {type: "Favoris", display: "Favoris", icon: "fa-toolbox"}
+    {type: "Favori", display: "Favoris", icon: "fa-toolbox"}
 ]
 
 function showFilters()
