@@ -1,7 +1,5 @@
 function typeToColor(typeName)
 {
-    return "blue";
-    
     switch (typeName) {
         case "Administratif": return "orange";
         case "Sport": return "darkblue";
@@ -26,12 +24,12 @@ function toIcon(icon, color)
 }
 
 class Place {
-    constructor(type, name, latlng, icon) {
+    constructor(type, name, lat, lng, icon, description) {
         this.type = type;
         this.name = name;
-        this.latlng = latlng;
+        this.latlng = L.latLng(lat, lng);
         this.favorite = false;
-        this.marker = L.marker(latlng, {icon: toIcon(icon, typeToColor(type))});
+        this.marker = L.marker(this.latlng, {icon: toIcon(icon, typeToColor(type))});
         this.marker.on("click",this.callback.bind(this));
     }
 
@@ -42,29 +40,30 @@ class Place {
 
 var places = {
     "Administratif": [
-        new Place("Administratif","Service courrier", L.latLng(45.7834146,4.87807870000006),"envelope"),
-        new Place("Administratif","Direction",L.latLng(45.78332720254533,4.878197908401489),"building"),
+        new Place("Administratif","Service courrier", 45.7834146,4.87807870000006,"envelope"),
+        new Place("Administratif","Direction",45.78332720254533,4.878197908401489,"building"),
     ],
     "Sport": [
-        new Place("Sport","Terrain de Volley Ball",L.latLng(45.784947033744814,4.881475567817688),"volleyball-ball"),
+        new Place("Sport","Terrain de Volley Ball",45.784947033744814,4.881475567817688,"volleyball-ball"),
     ],
     "Sante": [
-        new Place("Sante","Infirmerie",L.latLng(45.78429427547835,4.879103081922608),"notes-medical"),
+        new Place("Sante","Infirmerie",45.78429427547835,4.879103081922608,"notes-medical"),
     ],
     "Restaurant": [
-        new Place("Restaurant","Beurk",L.latLng(45.78109003726761,4.873552322387695),"utensils"),
+        new Place("Restaurant","Beurk",45.78109003726761,4.873552322387695,"utensils"),
     ],
     "VA": [
-        new Place("VA","Association AEDI",L.latLng(45.78192708850882,4.872792647703136),"user-graduate"),
-        new Place("VA","Bureau des élèves",L.latLng(45.78408288023195,4.87468957901001),"user-graduate"),
+        new Place("VA","Association AEDI",45.78192708850882,4.872792647703136,"user-graduate"),
+        new Place("VA","Bureau des élèves",45.78408288023195,4.87468957901001,"user-graduate"),
+        new Place("VA","INSAlgo",45.781804,4.872876,"user-graduate","De l'algo et de la Pizza"),
     ],
     "Amphi": [
-        new Place("Amphi","Amphithéatre Gaston Berger",L.latLng(45.78245928286134,4.872044920921326),"landmark"),
+        new Place("Amphi","Amphithéatre Gaston Berger",45.78245928286134,4.872044920921326,"landmark"),
     ],
     "Departement": [
-        new Place("Departement","Département Informatique",L.latLng(45.78192708850882,4.872792647703136),"graduation-cap"),
-        new Place("Departement","Département Génie Electrique",L.latLng(45.78294016834221,4.871694841686804),"graduation-cap"),
-        new Place("Departement","Département FIMI",L.latLng(45.783969959961736,4.88181542071311),"graduation-cap"),
+        new Place("Departement","Département Informatique",45.78192708850882,4.872792647703136,"graduation-cap"),
+        new Place("Departement","Département Génie Electrique",45.78294016834221,4.871694841686804,"graduation-cap"),
+        new Place("Departement","Département FIMI",45.783969959961736,4.88181542071311,"graduation-cap"),
     ],
     "Favori": [
     ]
