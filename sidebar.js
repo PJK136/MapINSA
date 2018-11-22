@@ -54,4 +54,12 @@ function addAllFilters()
         addFilter(filters[i]);
 }
 
+function updateFilters(element)
+{
+    var filters = $(".filter-checkbox");
+    for (var i = 0; i < filters.length; i++)
+        if (filters[i].checked != element.checked)
+            filters[i].click();
+}
+
 $(document).ready(() => addAllFilters());
