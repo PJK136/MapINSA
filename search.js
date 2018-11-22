@@ -34,7 +34,7 @@ class Place {
     }
 
     callback(){
-        getPlaceInfo(this);
+        showPlaceInfo(this);
     }
 }
 

@@ -9,7 +9,6 @@ var filters = [
     {type: "Favoris", display: "Favoris", icon: "fa-toolbox"}
 ]
 
-
 function showFilters()
 {
     $("#sidebar").width("100%");
@@ -62,4 +61,10 @@ function updateFilters(element)
             filters[i].click();
 }
 
-$(document).ready(() => addAllFilters());
+$(document).ready(() => {
+    addAllFilters();
+    
+    $("#filter-Amphi").click();
+    $("#filter-Restaurant").click();
+    $("#filter-Sante").click();
+});

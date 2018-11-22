@@ -14,3 +14,17 @@
 {
     height: 60px;
 }
+
+#menupanel
+{
+    height: 75%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Stay on top */
+    top: 100%;
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
