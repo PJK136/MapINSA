@@ -1,12 +1,12 @@
 var filters = [
-    {type: TypeEnum.Administratif, display: "Administratif", icon: "fa-toolbox"},
-    {type: TypeEnum.Sport, display: "Terrains de sport", icon: "fa-toolbox"},
-    {type: TypeEnum.Sante, display: "Santé", icon: "fa-toolbox"},
-    {type: TypeEnum.Restaurants, display: "Restaurants", icon: "fa-toolbox"},
-    {type: TypeEnum.VA, display: "Vie Associative", icon: "fa-toolbox"},
-    {type: TypeEnum.Amphi, display: "Amphithéâtres", icon: "fa-toolbox"},
-    {type: TypeEnum.Departement, display: "Départements", icon: "fa-toolbox"},
-    {type: "favorite", display: "Favoris", icon: "fa-toolbox"}
+    {type: "Administratif", display: "Administratif", icon: "fa-toolbox"},
+    {type: "Sport", display: "Terrains de sport", icon: "fa-toolbox"},
+    {type: "Sante", display: "Santé", icon: "fa-toolbox"},
+    {type: "Restaurant", display: "Restaurants", icon: "fa-toolbox"},
+    {type: "VA", display: "Vie Associative", icon: "fa-toolbox"},
+    {type: "Amphi", display: "Amphithéatres", icon: "fa-toolbox"},
+    {type: "Departement", display: "Départements", icon: "fa-toolbox"},
+    {type: "Favoris", display: "Favoris", icon: "fa-toolbox"}
 ]
 
 
@@ -40,9 +40,9 @@ function addFilter(filterData)
     filter.find(".filter-checkbox").val(filterData.type);
     filter.find(".filter-checkbox").change(function() {
         if ($(this).is(":checked"))
-            displayLayer(parseInt($(this).val()));
+            displayLayer($(this).val());
         else
-            hideLayer(parseInt($(this).val()));
+            hideLayer($(this).val());
     });
     filter.find(".filter-checkbox-label").attr("for", "filter-"+filterData.type);
     $("#filterList").append(filter);

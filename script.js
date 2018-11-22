@@ -8,13 +8,13 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
     id:'mapbox.light',attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-/*function onLocationFound(e) {
+function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
-    L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    //L.marker(e.latlng).addTo(map)
+    //    .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-    //L.circle(e.latlng, radius).addTo(map);
+    L.circle(e.latlng, radius).addTo(map);
 }
 
 function onLocationError(e) {
@@ -22,7 +22,6 @@ function onLocationError(e) {
 }
 
 map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);*/
+map.on('locationerror', onLocationError);
 
-//map.locate({setView: true, maxZoom: 16});
-
+map.locate({setView: true, maxZoom: 16});
