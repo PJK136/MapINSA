@@ -134,6 +134,7 @@ Dimanche : 7h00-20h00`),
 };
 
 function search(request){
+    hideMenu();
     layers["Search"].clearLayers();
     refreshLayers();
     
