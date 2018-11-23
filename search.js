@@ -59,7 +59,8 @@ Samedi : Fermé
 Dimanche : Fermé`),
     ],
     "Sport": [
-        new Place("Sport","Terrain de Volley Ball",45.784947033744814,4.881475567817688,"volleyball-ball",`Besoin de l'accord du centre des sports pour entrer`),
+        new Place("Sport","Terrain de Beach Volley",45.784947033744814,4.881475567817688,"volleyball-ball",""),
+        new Place("Sport","Terrain de Tennis",45.784242, 4.878581,"table-tennis",""),
         new Place("Sport","Piscine",45.783892, 4.877760,"swimming-pool",""),
         new Place("Sport","Gymnase C",45.784079, 4.877570,"running",""),
         new Place("Sport","Gymnase B",45.785543, 4.883402,"running",""),
