@@ -4,7 +4,7 @@ var filters = [
     {type: "Sante", display: "Santé", icon: "fa-toolbox"},
     {type: "Restaurant", display: "Restaurants", icon: "fa-toolbox"},
     {type: "VA", display: "Vie Associative", icon: "fa-toolbox"},
-    {type: "Amphi", display: "Amphithéatres", icon: "fa-toolbox"},
+    {type: "Amphi", display: "Amphithéâtres", icon: "fa-toolbox"},
     {type: "Departement", display: "Départements", icon: "fa-toolbox"},
     {type: "Favori", display: "Favoris", icon: "fa-toolbox"}
 ]
