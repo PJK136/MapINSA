@@ -134,18 +134,28 @@ Dimanche : 7h00-20h00`),
 };
 
 function search(request){
-
+    layers["Search"].clearLayers();
+    refreshLayers();
+    
+    var latLngs = [];
     for (var typeName in places)
     {
         places[typeName].forEach(element => {
-            if(request == element.name){
-                element.marker.addTo(map);
+            if(element.name.toLowerCase().includes(request.toLowerCase())){
+                layers["Search"].addLayer(element.marker);
+                latLngs.push(element.marker.getLatLng());
             }
         });
     }
+    
+    if (latLngs.length > 0)
+    {
+        var markerBounds = L.latLngBounds(latLngs);
+        map.fitBounds(markerBounds);
+    }
 }
 
-function createLayer(typeName){
+function createLayerGroup(typeName){
 
     var markers = [];
     places[typeName].forEach(place => {
@@ -155,27 +165,16 @@ function createLayer(typeName){
    return L.layerGroup(markers);
 }
 
-function createFavLayer(){
-    var markers = [];
-    
-    for (var typeName in places)
-    {
-        places[typeName].forEach(place => {
-            if (place.favorite)
-                markers.push(place.marker);
-        });
-    }
-    return L.layerGroup(markers);
-}
-
 var layers = [];
 
 for (var typeName in places)
 {
-    layers[typeName] = createLayer(typeName);
+    layers[typeName] = createLayerGroup(typeName);
 }
 
-layers["Favori"] = createFavLayer();
+layers["Favori"] = L.layerGroup();
+layers["Search"] = L.layerGroup();
+layers["Search"].addTo(map);
 
 function displayLayer(typeName){
     layers[typeName].addTo(map);
@@ -183,9 +182,44 @@ function displayLayer(typeName){
 
 function hideLayer(typeName){
     map.removeLayer(layers[typeName]);
+    refreshLayers();
 }
 
 function setFavorite(place,mode){
     place.favorite = mode;
-    layers["Favori"] = createFavLayer();
+    if (place.favorite)
+        layers["Favori"].addLayer(place.marker);
+    else
+    {
+        layers["Favori"].removeLayer(place.marker);
+        refreshLayers();
+    }
 }
+
+function refreshLayers()
+{
+    for (var typeName in layers)
+    {
+        if (map.hasLayer(layers[typeName]))
+        {
+            map.removeLayer(layers[typeName]);
+            layers[typeName].addTo(map);
+        }
+    }
+}
+
+$(document).ready(() => {
+    $("#search-form").submit(function(event) {
+        event.preventDefault();
+        search($("#search-place").val());
+    });
+    
+    for (var typeName in places)
+    {
+        places[typeName].forEach(element => {
+            var option = $("<option>");
+            option.text(element.name);
+            $("#places").append(option);
+        });
+    }
+});
