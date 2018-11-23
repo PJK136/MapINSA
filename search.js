@@ -269,4 +269,7 @@ $(document).ready(() => {
             $("#places").append(option);
         });
     }
+    
+    map.on("click", hideMenu);
+    map.on("dragstart", hideMenu);
 });
